@@ -1,6 +1,6 @@
 # Личный проект «{{projectTitle}}»
 
-* Студент: [{{userName}}]({{userProfile}}).
+* Студент: [Евгений Костромин](https://github.com/Evgen1605/sedona).
 * Наставник: `Неизвестно`.
 
 ---
