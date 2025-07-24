@@ -79,10 +79,41 @@ body {
   padding: 8px 14px;
   border: none;
   text-decoration: none;
+  box-sizing: border-box;
 }
+
+.button:hover,
+.button:focus {
+  background-color: #615048;
+}
+
+.button:active {
+  color: rgba(255, 255, 255, 0.3);
+}
+
 
 .button-blue {
   background: #82b3d3;
+}
+
+.button-blue:hover,
+.button-blue:focus {
+  background-color: #68a2ca;
+}
+
+.button-reset {
+  margin-top: 32px;
+  padding: 8px 50px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.button-reset:hover {
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.button-reset:focus {
+  background-color: rgba(0, 0, 0, 0);
 }
 
 /* header */
@@ -118,19 +149,49 @@ body {
 }
 
 .navigation-link {
-  display: block;
+  position: relative;
   color: inherit;
   text-decoration: none;
   text-align: center;
   padding: 20px 16px;
 }
 
+.navigation-link:hover::before,
+.navigation-link:focus::before,
+.navigation-link:active::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  right: 15px;
+  background-color: #756257;
+  height: 2px;
+}
+
+.navigation-link-current::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  right: 15px;
+  background-color: #756257;
+  height: 2px;
+}
+
 .navigation-link-search {
   background: url(../images/icons/search.svg) center no-repeat;
+  padding: 22px 30px;
 }
 
 .navigation-link-selected {
   background: url(../images/icons/heart.svg) center no-repeat;
+  padding: 22px 30px;
+  margin-right: 20px;
+}
+
+.navigation-link-button {
+  padding-left: 34px;
+  padding-right: 34px;
 }
 
 /* end header */
@@ -145,7 +206,7 @@ body {
     url(../images/index-bacground.jpg) center / cover no-repeat rgba(131, 179, 211, 0.2);
   text-align: center;
   padding-top: 50px;
-  padding-bottom: 82px;
+  padding-bottom: 84px;
 }
 
 .advantages-intro {
@@ -169,23 +230,49 @@ body {
   font-size: 22px;
   line-height: 26px;
   text-align: center;
+  margin: 0 0 54px 0;
 }
 
 .advantages {
   display: grid;
   grid-template-columns: repeat(3, 400px);
+  grid-template-rows: 1fr repeat(3, 385px);
 }
 
 .advantages-title {
+  position: relative;
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
   text-transform: uppercase;
   text-align: center;
+  margin: 0 0 30px 0;
+  color: #000;
+  max-width: 175px;
+}
+
+.advantages-title::before {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.3);
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.advantages-title-white {
+  color: #fff;
+}
+
+.advantages-title-white::before {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .advantages-description {
   text-align: center;
+  margin: 30px 0 0;
 }
 
 .advantages-town,
@@ -196,6 +283,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .advantages-image-1 {
@@ -215,7 +303,11 @@ body {
 .advantages-square,
 .advantages-turist {
   background: rgba(131, 179, 211, 0.12);
-  padding: 103px 85px;
+  padding: 0 85px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .advantages-road {
@@ -224,9 +316,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
-.relax{
+.relax {
   display: grid;
   grid-template-columns: repeat(3, 400px);
 }
@@ -264,8 +357,16 @@ body {
   color: #fff;
 }
 
+.mailing-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
 .additional-button {
-  background-color: #82b3d3;
+  border-radius: 0 4px 4px 0;
+  padding: 8px 50px;
 }
 
 .mailing-input {
@@ -274,6 +375,8 @@ body {
   width: 452px;
   height: 52px;
   background-color: #f2f2f2;
+  border: none;
+  box-sizing: border-box;
 }
 
 /* end main */
@@ -299,7 +402,7 @@ body {
   padding: 12px;
 }
 
-.breadcrumbs{
+.breadcrumbs {
   margin: 0 0 40px;
   padding: 0;
 }
@@ -400,6 +503,12 @@ body {
   padding: 16px;
   margin-right: 8px;
 }
+.sort:hover,
+.sort:focus,
+.sort:active,
+.sort-curent{
+  border-color: #000;
+}
 
 .sort-cart {
   background: url(../images/icons/variant=tile.svg) center no-repeat;
@@ -432,7 +541,8 @@ body {
   text-decoration: none;
   display: block;
 }
-.product-card-img{
+
+.product-card-img {
   object-fit: cover;
   max-width: 100%;
   max-height: 100%;
@@ -515,17 +625,33 @@ body {
   background-color: #82b3d3;
   text-decoration: none;
 }
+.pagination-item:hover,
+.pagination-item:focus{
+  background-color: #68a2ca;
+}
+.pagination-item:active{
+  background-color: #82b3d3;
+  color: rgba(255, 255, 255, 0.3);
+}
 
 
-.pagination-item-current {
+
+.pagination-item-current,
+.pagination-item-current:hover,
+.pagination-item-current:focus,
+.pagination-item-current:active {
   background-color: #f2f2f2;
   color: inherit;
 }
 
-.pagination-item-skip {
+.pagination-item-skip,
+.pagination-item-skip:hover,
+.pagination-item-skip:focus,
+.pagination-item-skip:active {
   background: none;
   color: #333;
 }
+
 
 .mailing-catalog {
   background-color: #fff;
@@ -546,6 +672,7 @@ body {
   background-color: #fff;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 45px 70px;
 }
 
@@ -556,26 +683,23 @@ body {
   margin: 0;
   padding: 0;
   list-style-type: none;
-
+  align-items: center;
 }
 
 .button-social-vk,
 .button-social-telegram,
 .button-social-youtube {
-  display: block;
-  padding: 26px;
+  padding: 12px;
+  display: flex;
 }
 
-.button-social-vk {
-  background: url(../images/icons/Social-Vk.svg) center no-repeat;
+.social-icon:hover,
+.social-icon:focus {
+  fill: #68a2ca;
 }
 
-.button-social-telegram {
-  background: url(../images/icons/Social-Telegram.svg) center no-repeat;
-}
-
-.button-social-youtube {
-  background: url(../images/icons/Social-Youtube.svg) center no-repeat;
+.social-icon:active {
+  fill: rgba(104, 162, 202, 0.3);
 }
 
 .footer-phone {
@@ -588,11 +712,21 @@ body {
   text-decoration: none;
 }
 
-.logo-academy {
-  background: url(../images/icons/brand-htmlacademy.svg) center no-repeat;
-  display: block;
-  padding: 20px;
-  width: 80px;
+.footer-phone:hover,
+.footer-phone:focus {
+  color: #756157;
+}
+
+.footer-phone:active {
+  color: rgba(117, 97, 87, 0.3);
+}
+
+.logo-academy:hover,
+.logo-academy:focus {
+  fill: #756157;
+}
+.logo-academy:active{
+  fill: rgba(117, 97, 87, 0.3);
 }
 
 /* end footer */
